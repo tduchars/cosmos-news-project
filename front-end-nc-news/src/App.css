@@ -1,0 +1,86 @@
+/* Global CSS */
+
+.App {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font-family: 'Gotham Book';
+  font-size: 1em;
+  line-height: 1em;
+}
+
+h1 {
+  font-weight: 300;
+  font-family: 'Gotham Bold';
+}
+
+.tags {
+  color: #ba1f31;
+}
+
+.App-header {
+  background-color: #202829;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.home-button {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  background-color: #fafafa;
+  border-radius: 8px;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+
+.topics-nav {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  border: 1px solid teal;
+  margin-right: 20%;
+}
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid blueviolet;
+}
+
+.article-card {
+  border: 1px solid black;
+  display: grid;
+}
+
+@font-face {
+  font-family: 'Gotham Book';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Book'), url('./fonts/GOTHAMBOOK.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Bold'), url('./fonts/GOTHAMBOLD.woff') format('woff');
+}
