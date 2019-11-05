@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Link } from '@reach/router';
 import * as api from '../utils/api';
 
 class Topics extends Component {
   state = {
     topics: [],
-    isLoading: true
+    isLoading: true,
+    sortOrder: true
   };
   componentDidMount() {
     api.fetchAllTopics().then(({ data: { topics } }) => {
@@ -19,9 +21,9 @@ class Topics extends Component {
         {!isLoading &&
           topics.map((topic, idx) => {
             return (
-              <>
-                <button key={idx}>{topic.slug}</button>
-              </>
+              <Link to={`/topic/${topic.slug}`} key={idx}>
+                <h5 className="topic-selector">{topic.slug}</h5>
+              </Link>
             );
           })}
       </div>

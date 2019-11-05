@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../utils/api';
-import Votes from './Votes';
+import Interact from './Interact';
+import CommentList from './CommentList';
 
 class SingleArticle extends Component {
   state = {
@@ -15,7 +16,7 @@ class SingleArticle extends Component {
   render() {
     const { isLoading, article } = this.state;
     return (
-      <div>
+      <div className="single-article">
         {!isLoading && (
           <>
             <h3>{article.title}</h3>
@@ -25,7 +26,8 @@ class SingleArticle extends Component {
               {article.author}
               <span className="tags">/&gt;</span>
             </p>
-            <Votes />
+            <Interact votes={article.votes} />
+            <CommentList article_id={article.article_id} />
           </>
         )}
       </div>

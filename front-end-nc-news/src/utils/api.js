@@ -8,11 +8,12 @@ export const fetchAllTopics = () => {
     });
 };
 
-export const fetchAllArticles = topic => {
+export const fetchAllArticles = (topic, sort_by) => {
   return axios
     .get('https://nc-tabloid.herokuapp.com/api/articles', {
       params: {
-        topic
+        topic,
+        sort_by
       }
     })
     .then(articles => {
@@ -25,5 +26,13 @@ export const fetchArticleById = article_id => {
     .get(`https://nc-tabloid.herokuapp.com/api/articles/${article_id}`)
     .then(({ data: { article } }) => {
       return article;
+    });
+};
+
+export const fetchCommentsByArticle = article_id => {
+  return axios
+    .get(`https://nc-tabloid.herokuapp.com/api/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
     });
 };

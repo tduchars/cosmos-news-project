@@ -50,12 +50,9 @@ h1 {
 }
 
 .topics-nav {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr;
   border: 1px solid teal;
-  margin-right: 20%;
 }
 
 .articles-list {
@@ -69,6 +66,45 @@ h1 {
 .article-card {
   border: 1px solid black;
   display: grid;
+}
+
+.single-article {
+  border: 1px solid black;
+  display: grid;
+}
+
+.interact {
+  border: 1px solid red;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  right: 0px;
+}
+
+.sort-by {
+  border: 1px solid red;
+}
+
+.comment-list {
+  border: 1px solid purple;
+}
+
+.comment-card {
+  border: 1px solid pink;
+}
+
+.dropbtn {
+  background-color: #202829;
+  color: white;
+  padding: 16px;
+  font-size: 0.8em;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
 @font-face {

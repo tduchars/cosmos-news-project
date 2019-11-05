@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Header />
       <Topics />
-      <Router>
+      <Router primary={false}>
         <ArticlesList path="/" />
-        <ArticlesList path="/:topic" />
+        <ArticlesList path="/topic/:topic" />
         <SingleArticle path="/articles/:article_id" />
       </Router>
     </div>
