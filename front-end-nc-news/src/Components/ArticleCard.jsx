@@ -13,7 +13,6 @@ const ArticleCard = props => {
           {props.article.author}
           <span className="tags">/&gt;</span>
         </p>
-        <h5>{props.article.created_at}</h5>
       </>
     </div>
   );

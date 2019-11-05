@@ -9,6 +9,9 @@ const Header = () => {
         <Link to="/" className="home-button">
           Home
         </Link>
+        {/* <Link to="/login" className="header-log-in">
+          Login
+        </Link> */}
       </nav>
       <header className="App-header">
         <h1>

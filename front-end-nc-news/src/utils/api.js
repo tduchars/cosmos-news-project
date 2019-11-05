@@ -36,3 +36,11 @@ export const fetchCommentsByArticle = article_id => {
       return comments;
     });
 };
+
+export const fetchAllUsers = () => {
+  return axios
+    .get(`https://nc-tabloid.herokuapp.com/api/users`)
+    .then(({ data: { users } }) => {
+      return users;
+    });
+};
