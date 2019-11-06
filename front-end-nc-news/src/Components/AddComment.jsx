@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class AddComment extends Component {
   state = {
     showMenu: false,
-    commentInput: ''
+    commentInput: '',
+    triggerPrompt: false
   };
 
   showInputs = () => {
@@ -18,8 +19,16 @@ class AddComment extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.commentAdder(this.state.commentInput);
-    this.setState({ showMenu: false, commentInput: '' });
+    if (this.state.commentInput.length === 0) {
+      this.setState({ triggerPrompt: true });
+    } else {
+      this.props.commentAdder(this.state.commentInput);
+      this.setState({
+        showMenu: false,
+        commentInput: '',
+        triggerPrompt: false
+      });
+    }
 
     this.setState({
       name: '',
@@ -49,6 +58,9 @@ class AddComment extends Component {
                 </label>
               </form>
             </div>
+          )}
+          {this.state.triggerPrompt && (
+            <h5 className="prompt-message">No empty voids allowed...</h5>
           )}
         </div>
       </>

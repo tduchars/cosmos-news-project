@@ -45,6 +45,7 @@ class CommentList extends Component {
                 allowVotes={this.props.allowVotes}
                 key={comment.comment_id}
                 handleDelete={this.handleDelete}
+                username={this.props.username}
               />
             );
           })}

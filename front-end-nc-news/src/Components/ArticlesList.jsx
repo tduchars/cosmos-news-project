@@ -86,7 +86,7 @@ class ArticlesList extends Component {
               );
             })
           ) : (
-            <JellyfishSpinner />
+            <JellyfishSpinner size={80} color="#ba1f31" />
           )}
         </div>
       </>

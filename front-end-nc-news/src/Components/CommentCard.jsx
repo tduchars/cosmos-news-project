@@ -17,7 +17,7 @@ const CommentCard = props => {
           article_id={comment_id}
           allowVotes={props.allowVotes}
         />
-        {props.allowVotes && (
+        {props.allowVotes && props.username === props.comment.author && (
           <h4
             className="delete-comment-card"
             onClick={e => {

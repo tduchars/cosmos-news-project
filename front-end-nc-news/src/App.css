@@ -2,6 +2,8 @@
 
 .App {
   text-align: center;
+  display: grid;
+  grid-template-rows: 65px 65px 1fr 100px;
 }
 
 a {
@@ -44,6 +46,13 @@ h1 {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.errorText {
+  height: 66vh;
 }
 
 .home-button {
@@ -82,8 +91,9 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 3em;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-top: 0.2em;
+  margin-left: 0.6em;
+  margin-right: 0.6em;
 }
 
 .topic-selector {
@@ -132,6 +142,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 .single-article-card {
@@ -177,6 +188,15 @@ h1 {
 .dropdown-input {
   border: 1px solid green;
   margin-top: 2%;
+}
+
+.prompt-message {
+  color: #ba1f31;
+}
+
+.loader {
+  padding: 8%;
+  margin-bottom: 8%;
 }
 
 @font-face {
