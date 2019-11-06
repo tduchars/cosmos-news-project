@@ -44,3 +44,35 @@ export const fetchAllUsers = () => {
       return users;
     });
 };
+
+export const incrementArticleVote = (article_id, value, prefix) => {
+  return axios
+    .patch(`https://nc-tabloid.herokuapp.com/api/${prefix}/${article_id}`, {
+      inc_votes: value
+    })
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const postCommentOnArticle = (username, article_id, body) => {
+  return axios
+    .post(
+      `https://nc-tabloid.herokuapp.com/api/articles/${article_id}/comments`,
+      {
+        username,
+        body
+      }
+    )
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
+
+export const deleteComment = comment_id => {
+  return axios
+    .delete(`https://nc-tabloid.herokuapp.com/api/comments/${comment_id}`)
+    .then(response => {
+      return response.status;
+    });
+};

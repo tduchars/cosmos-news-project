@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import * as api from '../utils/api';
 import ArticleCard from './ArticleCard';
 import Login from './Login';
+import { JellyfishSpinner } from 'react-spinners-kit';
 
 class ArticlesList extends Component {
   state = {
@@ -45,31 +46,34 @@ class ArticlesList extends Component {
       <>
         {!userLogged && <Login path="/login" addUsername={this.addUsername} />}
         <div className="articles-list">
-          <div className="dropdown-content">
+          <div className="sort-by-filters">
             <button
               onClick={e => {
                 this.handleClick('created_at');
               }}
+              className="filter-buttons"
             >
-              NEW
+              new
             </button>
             <button
               onClick={e => {
                 this.handleClick('votes');
               }}
+              className="filter-buttons"
             >
-              VOTES
+              votes
             </button>
             <button
               onClick={e => {
                 this.handleClick('comment_count');
               }}
+              className="filter-buttons"
             >
-              COMMENTS
+              comments
             </button>
           </div>
 
-          {!isLoading &&
+          {!isLoading ? (
             articles.map(article => {
               return (
                 <Link
@@ -80,7 +84,10 @@ class ArticlesList extends Component {
                   <ArticleCard article={article} />
                 </Link>
               );
-            })}
+            })
+          ) : (
+            <JellyfishSpinner />
+          )}
         </div>
       </>
     );

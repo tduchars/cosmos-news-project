@@ -26,6 +26,12 @@ The package versions I developed the site on can be seen below:
 (If you have any issues check you are running versions of these
 dependencies which will support the functionality.)
 
+## ** Recommended **
+
+Given that this is a portfolio piece I added some logged in and not logged in user functionality. If you log in with a valid username that is on the database (no password is required!) Then you are given the functionality to add comments and vote on articles.
+
+If you are not "logged in" then this functionality is removed.
+
 ## Link to Hosted Site
 
 The link to the hosted version of the site can be found at here:
