@@ -39,14 +39,15 @@ class AddComment extends Component {
     return (
       <>
         <div>
-          <button className="dropdown-input" onClick={this.showInputs}>
-            Add Comment
+          <button className="dropdown-form-button" onClick={this.showInputs}>
+            add comment
           </button>
           {this.state.showMenu && (
-            <div className="dropdown-content">
+            <div>
               <form onSubmit={this.handleSubmit}>
                 <label htmlFor="">
                   <input
+                    className="add-comment-input"
                     type="text"
                     placeholder="be nice..."
                     onChange={this.handleInputs}
@@ -54,7 +55,7 @@ class AddComment extends Component {
                   />
                 </label>
                 <label htmlFor="">
-                  <button>Post</button>
+                  <button className="add-comment-button">post</button>
                 </label>
               </form>
             </div>

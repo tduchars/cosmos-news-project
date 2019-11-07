@@ -5,7 +5,10 @@ class Login extends Component {
   state = {
     allUsers: [],
     username: '',
-    isLoading: true
+    avatarUrl: '',
+    isLoading: true,
+    showLogin: false,
+    showAvatar: false
   };
   componentDidMount() {
     api.fetchAllUsers().then(allUsers => {
@@ -14,27 +17,32 @@ class Login extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addUsername(this.state.username);
+    const avatar = this.state.allUsers.filter(user => {
+      return user.username === this.state.username;
+    });
+    this.props.addUsername(this.state.username, avatar[0].avatar_url);
   };
   handleInput = e => {
     this.setState({ username: e.target.value });
   };
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} className="add-student-form">
-          <label htmlFor="">
-            <input
-              onChange={this.handleInput}
-              type="text"
-              placeholder="username..."
-              className="login-input"
-              value={this.state.username}
-            />
-          </label>
-          <button className="login-user">Login</button>
-        </form>
-      </div>
+      <>
+        <div className="login-form">
+          <form onSubmit={this.handleSubmit} className="add-student-form">
+            <label htmlFor="">
+              <input
+                onChange={this.handleInput}
+                type="text"
+                placeholder="username..."
+                className="login-input"
+                value={this.state.username}
+              />
+            </label>
+            <button className="login-user">login</button>
+          </form>
+        </div>
+      </>
     );
   }
 }

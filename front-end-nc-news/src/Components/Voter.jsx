@@ -20,7 +20,7 @@ class Voter extends Component {
         {allowVotes && (
           <div className="interact">
             <button
-              className="vote-button"
+              className="up-vote-button"
               onClick={e => {
                 this.incVote(article_id, 1, prefix);
               }}
@@ -28,9 +28,11 @@ class Voter extends Component {
             >
               &uArr;
             </button>
-            <h5>{votes + this.state.optimisticVote}</h5>
+            <h5 className="votes-counter">
+              {votes + this.state.optimisticVote}
+            </h5>
             <button
-              className="vote-button"
+              className="down-vote-button"
               onClick={e => {
                 this.incVote(article_id, -1, prefix);
               }}

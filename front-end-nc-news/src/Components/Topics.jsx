@@ -18,6 +18,9 @@ class Topics extends Component {
     const { isLoading, topics } = this.state;
     return (
       <div className="topics-nav">
+        <Link to={`/`}>
+          <h5 className="topic-selector">all</h5>
+        </Link>
         {!isLoading &&
           topics.map((topic, idx) => {
             return (

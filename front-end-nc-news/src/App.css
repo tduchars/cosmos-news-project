@@ -1,17 +1,34 @@
 /* Global CSS */
 
+:root {
+  --main-dm-color: #121212;
+  --dp-dm-offset: #1e1e1e;
+  --dp-dm-focus: #1d1d1d;
+  --dp-dm-absolute: #383838;
+  --main-dm-text: #e2e2e2;
+  --main-dm-text-focus: #dadada;
+  --primary-variant: #bb86fc;
+  --secondary-variant: #03dac5;
+  --error-variant: #cf6679;
+}
+
 .App {
   text-align: center;
   display: grid;
   grid-template-rows: 65px 65px 1fr 100px;
 }
 
+*:focus {
+  outline: none;
+}
+
 a {
   text-decoration: none;
-  color: black;
+  color: var(--primary-variant);
 }
 
 body {
+  background: var(--main-dm-color);
   font-family: 'Gotham Book';
   font-size: 1em;
   line-height: 1em;
@@ -23,36 +40,46 @@ h1 {
 }
 
 .tags {
-  color: #ba1f31;
+  color: var(--primary-variant);
 }
 
 .App-header {
-  background-color: #202829;
+  background-color: var(--main-dm-color);
   min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--main-dm-text-focus);
 }
 
 .footer {
-  background-color: #202829;
+  background: var(--dp-dm-offset);
   min-height: 16vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--main-dm-text);
   left: 0;
   bottom: 0;
   right: 0;
+  margin-top: 1%;
 }
 
 .errorText {
-  height: 66vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.macErrorImg {
+  width: 250px;
+  height: 250px;
 }
 
 .home-button {
@@ -62,47 +89,79 @@ h1 {
   padding-right: 0.8em;
   padding-top: 0.8em;
   padding-bottom: 0.8em;
-  background-color: #fafafa;
   border-radius: 8px;
   position: absolute;
   top: 2%;
   left: 2%;
+  background: var(--dp-dm-offset);
 }
 
-.header-log-in {
+.avatar-icon-style {
   font-family: 'Gotham Book';
-  font-size: 0.8em;
-  padding-left: 0.8em;
-  padding-right: 0.8em;
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-  background-color: #fafafa;
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  filter: invert(100%);
+}
+
+.user-avatar-icon-style {
+  font-family: 'Gotham Book';
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   position: absolute;
   top: 2%;
   right: 2%;
 }
 
-.login-input {
-  border: 1px solid black;
+/* Login Form  */
+
+.login-form {
+  margin-top: 2%;
 }
+
+.login-input {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: var(--dp-dm-absolute);
+  color: var(--primary-variant);
+  margin-right: 20px;
+}
+
+.login-user {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  color: var(--primary-variant);
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--dp-dm-absolute);
+  border: none;
+}
+
+/* ... */
 
 .topics-nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 3em;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1.6em;
   margin-top: 0.2em;
   margin-left: 0.6em;
   margin-right: 0.6em;
 }
 
 .topic-selector {
-  border: 1px solid #202829;
+  border: 1px solid var(--main-dm-color);
   font-family: 'Gotham Book';
   font-size: 0.8em;
   padding: 0.8em;
-  background-color: #fafafa;
   border-radius: 8px;
+  background: var(--dp-dm-offset);
 }
 
 .sort-by-filters {
@@ -112,11 +171,12 @@ h1 {
 }
 
 .filter-buttons {
-  border: 1px solid #202829;
+  border: 1px solid var(--main-dm-color);
   font-family: 'Gotham Book';
   font-size: 0.8em;
   padding: 0.8em;
-  background-color: #fafafa;
+  background: var(--dp-dm-offset);
+  color: var(--main-dm-text);
   border-radius: 8px;
   margin-left: 0.8em;
   margin-right: 0.8em;
@@ -134,15 +194,18 @@ h1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
   padding: 0.8em;
-  color: #202829;
-  background-color: #fafafa;
+  color: var(--main-dm-text);
+  background: var(--dp-dm-focus);
+}
+
+.article-card-title {
+  color: var(--main-dm-text-focus);
 }
 
 .single-article-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
 }
 
 .single-article-card {
@@ -151,25 +214,53 @@ h1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
   padding: 0.8em;
-  color: #202829;
-  background-color: #fafafa;
+  color: var(--main-dm-text);
+  background: var(--dp-dm-focus);
 }
+
+/* interacting component */
 
 .interact {
   border-radius: 8px;
   position: relative;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 5fr 2fr 1fr 2fr 5fr;
+  justify-items: center;
 }
 
-.vote-button {
+.up-vote-button {
+  grid-column: 2;
   border-radius: 8px;
+  border: none;
+  width: 50px;
+  background: var(--dp-dm-offset);
+  color: var(--main-dm-text);
+  font-size: 2em;
+  transition: all 0.8s ease-in-out;
+}
+.up-vote-button:disabled {
+  transition: all 0.8s ease-in-out;
+  color: var(--secondary-variant);
+}
+.votes-counter {
+  padding: 8px;
+}
+.down-vote-button {
+  border-radius: 8px;
+  border: none;
+  width: 50px;
+  background: var(--dp-dm-offset);
+  color: var(--main-dm-text);
+  font-size: 2em;
+  transition: all 0.8s ease-in-out;
+}
+.down-vote-button:disabled {
+  transition: all 0.8s ease-in-out;
+  color: var(--error-variant);
 }
 
-.sort-by {
-  border: 1px solid red;
-}
+/* ... */
 
 .comment-card {
   border-radius: 8px;
@@ -177,21 +268,54 @@ h1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
   padding: 0.8em;
-  color: #202829;
-  background-color: #fafafa;
+  color: var(--main-dm-text);
+  background: var(--dp-dm-focus);
 }
 
 .delete-comment-card {
   margin-bottom: 0px;
 }
 
-.dropdown-input {
-  border: 1px solid green;
+.dropdown-form-button {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  color: var(--primary-variant);
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--dp-dm-absolute);
+  border: none;
   margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.add-comment-input {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: var(--dp-dm-absolute);
+  color: var(--primary-variant);
+  margin-left: 50px;
+}
+
+.add-comment-button {
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  color: var(--primary-variant);
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--dp-dm-absolute);
+  border: none;
+  margin-left: 10px;
 }
 
 .prompt-message {
-  color: #ba1f31;
+  color: var(--error-variant);
+}
+
+.errorText {
+  color: var(--error-variant);
 }
 
 .loader {
