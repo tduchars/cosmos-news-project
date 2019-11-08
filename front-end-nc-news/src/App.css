@@ -1,5 +1,9 @@
 /* Global CSS */
 
+/* .light-mode {
+  logo: &#10050;
+} */
+
 :root {
   --main-dm-color: #121212;
   --dp-dm-offset: #1e1e1e;
@@ -52,21 +56,36 @@ h1 {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: var(--main-dm-text-focus);
+  border-bottom: 1px solid var(--primary-variant);
 }
 
 .footer {
   background: var(--dp-dm-offset);
   min-height: 16vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   font-size: calc(10px + 2vmin);
   color: var(--main-dm-text);
   left: 0;
   bottom: 0;
   right: 0;
   margin-top: 1%;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-links {
+  grid-row: 2/3;
+  align-items: center;
+  margin: 0;
+  font-size: 0.6em;
+}
+
+.github-links:hover {
+  text-shadow: 0px 0px 6px rgb(244, 244, 244);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
 
 .errorText {
@@ -75,11 +94,6 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 70vh;
-}
-
-.macErrorImg {
-  width: 250px;
-  height: 250px;
 }
 
 .home-button {
@@ -94,6 +108,11 @@ h1 {
   top: 2%;
   left: 2%;
   background: var(--dp-dm-offset);
+}
+
+.home-button:hover {
+  text-shadow: 0px 0px 6px rgb(185, 151, 255);
+  transition: all 0.2s ease 0s;
 }
 
 .avatar-icon-style {
@@ -144,15 +163,33 @@ h1 {
   border: none;
 }
 
+.logout {
+  max-width: 100px;
+  grid-column: 3;
+  grid-row: 2;
+  font-family: 'Gotham Book';
+  font-size: 0.6em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  border-radius: 8px;
+  color: var(--error-variant);
+  background: var(--dp-dm-offset);
+  align-items: center;
+}
+
 /* ... */
 
 .topics-nav {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 1.6em;
   margin-top: 0.2em;
   margin-left: 0.6em;
   margin-right: 0.6em;
+  justify-content: center;
+  align-items: center;
 }
 
 .topic-selector {
@@ -164,10 +201,37 @@ h1 {
   background: var(--dp-dm-offset);
 }
 
+.topic-selector:hover {
+  text-shadow: 0px 0px 6px rgb(185, 151, 255);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
 .sort-by-filters {
-  display: flex;
-  flex-direction: row;
-  margin: 0.8em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1.6em;
+  margin-top: 0.2em;
+  margin-left: 0.6em;
+  margin-right: 0.6em;
+}
+
+.sort-by-filters-drop {
+  border: 1px solid var(--main-dm-color);
+  font-family: 'Gotham Book';
+  font-size: 0.8em;
+  padding: 0.8em;
+  background: var(--dp-dm-offset);
+  color: var(--primary-variant);
+  border-radius: 8px;
+  margin: 10px;
+  margin-bottom: 0;
+}
+
+.sort-by-filters-drop:hover {
+  text-shadow: 0px 0px 6px rgb(185, 151, 255);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
 
 .filter-buttons {
@@ -178,8 +242,12 @@ h1 {
   background: var(--dp-dm-offset);
   color: var(--main-dm-text);
   border-radius: 8px;
-  margin-left: 0.8em;
-  margin-right: 0.8em;
+}
+
+.filter-buttons:hover {
+  text-shadow: 0px 0px 6px rgb(244, 244, 244);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
 
 .articles-list {
@@ -191,6 +259,7 @@ h1 {
 .article-card {
   border-radius: 8px;
   width: 75vw;
+  max-width: 700px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
   padding: 0.8em;
@@ -200,6 +269,28 @@ h1 {
 
 .article-card-title {
   color: var(--main-dm-text-focus);
+  text-decoration-skip: underline;
+  text-align: left;
+  max-width: 500px;
+  margin-left: 20px;
+}
+
+.title-underline {
+  color: var(--secondary-variant);
+  margin: 20px;
+  max-width: 250px;
+}
+
+.author-under-title {
+  text-align: left;
+  margin: 20px;
+}
+
+.article-card-blurb {
+  color: var(--main-dm-text-focus);
+  text-align: left;
+  max-width: 800px;
+  margin: 20px;
 }
 
 .single-article-page {
@@ -211,8 +302,10 @@ h1 {
 .single-article-card {
   border-radius: 8px;
   width: 75vw;
+  max-width: 700px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
+  margin-top: 30px;
   padding: 0.8em;
   color: var(--main-dm-text);
   background: var(--dp-dm-focus);
@@ -234,37 +327,45 @@ h1 {
   border-radius: 8px;
   border: none;
   width: 50px;
-  background: var(--dp-dm-offset);
+  height: 50px;
+  background: var(--dp-dm-focus);
   color: var(--main-dm-text);
-  font-size: 2em;
+  font-size: 1em;
   transition: all 0.8s ease-in-out;
+  cursor: pointer;
 }
 .up-vote-button:disabled {
   transition: all 0.8s ease-in-out;
   color: var(--secondary-variant);
+  font-size: 1.2em;
 }
 .votes-counter {
-  padding: 8px;
+  grid-column: 3;
+  font-size: 1em;
+  margin: auto;
 }
 .down-vote-button {
   border-radius: 8px;
   border: none;
   width: 50px;
-  background: var(--dp-dm-offset);
+  height: 50px;
+  background: var(--dp-dm-focus);
   color: var(--main-dm-text);
-  font-size: 2em;
+  font-size: 1em;
   transition: all 0.8s ease-in-out;
+  cursor: pointer;
 }
 .down-vote-button:disabled {
   transition: all 0.8s ease-in-out;
   color: var(--error-variant);
+  font-size: 1.2em;
 }
 
 /* ... */
 
 .comment-card {
   border-radius: 8px;
-  width: 60vw;
+  max-width: 450px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0.8em;
   padding: 0.8em;
@@ -274,6 +375,21 @@ h1 {
 
 .delete-comment-card {
   margin-bottom: 0px;
+}
+
+.comment-divider {
+  max-width: 300px;
+}
+
+.reveal-comments {
+  color: var(--main-dm-text);
+  font-size: 3em;
+  transition: all 0.5s ease-in-out !important;
+  cursor: pointer;
+}
+
+.reveal-comments:hover {
+  text-shadow: 0px 0px 6px rgb(244, 244, 244);
 }
 
 .dropdown-form-button {
@@ -286,6 +402,18 @@ h1 {
   border: none;
   margin-top: 2%;
   margin-bottom: 2%;
+  cursor: pointer;
+}
+
+.dropdown-form-button:hover {
+  text-shadow: 0px 0px 6px rgb(185, 151, 255);
+  transition: all 0.2s ease 0s;
+}
+
+.add-comment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-comment-input {
@@ -295,19 +423,30 @@ h1 {
   border-radius: 8px;
   border: none;
   background: var(--dp-dm-absolute);
-  color: var(--primary-variant);
-  margin-left: 50px;
+  color: var(--main-dm-text-focus);
+  resize: none;
+  max-width: 250px;
 }
 
 .add-comment-button {
   font-family: 'Gotham Book';
-  font-size: 0.8em;
+  font-size: 1em;
   color: var(--primary-variant);
   padding: 10px;
   border-radius: 8px;
   background: var(--dp-dm-absolute);
   border: none;
-  margin-left: 10px;
+  margin: 10px;
+}
+
+.author-timestamp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.date-string {
+  color: var(--secondary-variant);
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .prompt-message {
@@ -319,8 +458,25 @@ h1 {
 }
 
 .loader {
-  padding: 8%;
-  margin-bottom: 8%;
+  padding: 10%;
+  margin-bottom: 10%;
+}
+
+.projects-title {
+  color: var(--primary-variant);
+  font-size: 1.6em;
+}
+
+.project-list {
+  color: var(--main-dm-text);
+  height: 60vh;
+}
+
+.flip-grid-project {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+  grid-template-rows: 1fr 1fr;
+  color: var(--main-dm-text-focus);
 }
 
 @font-face {

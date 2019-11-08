@@ -5,7 +5,6 @@ import ArticleCard from './ArticleCard';
 import Login from './Login';
 import { SphereSpinner } from 'react-spinners-kit';
 import HandleError from './HandleError';
-import defaultAvatar from '../images/avatar-icon.png';
 
 class ArticlesList extends Component {
   state = {
@@ -14,7 +13,10 @@ class ArticlesList extends Component {
     sortBy: 'created_at',
     userLogged: localStorage.getItem('username'),
     avatarUrl: localStorage.getItem('avatar'),
-    err: ''
+    err: '',
+    page: 1,
+    maxPage: 1,
+    showSorts: false
   };
 
   componentDidMount() {
@@ -29,7 +31,7 @@ class ArticlesList extends Component {
       })
       .catch(err => {
         this.setState({
-          err: 'Invalid URL...'
+          err: 'invalid url...'
         });
       });
   }
@@ -54,55 +56,75 @@ class ArticlesList extends Component {
     this.setState({ userLogged, avatarUrl }, () => {
       localStorage.setItem('username', userLogged);
       localStorage.setItem('avatar', avatarUrl);
+      window.location.reload().scrollTop(0, 0);
+    });
+  };
+
+  flipShowSorts = () => {
+    this.setState(currentState => {
+      return {
+        showSorts: !currentState.showSorts
+      };
     });
   };
 
   render() {
-    const { isLoading, articles, userLogged, err, avatarUrl } = this.state;
+    const {
+      isLoading,
+      articles,
+      userLogged,
+      err,
+      avatarUrl,
+      showSorts
+    } = this.state;
     if (err) return <HandleError err={err} />;
     return (
       <>
         {!userLogged && <Login path="/login" addUsername={this.addUsername} />}
         {userLogged &&
-          (avatarUrl ? (
+          (avatarUrl && (
             <img
               src={avatarUrl}
               alt="users avatar icon"
               className="user-avatar-icon-style"
             ></img>
-          ) : (
-            <img
-              src={defaultAvatar}
-              alt="default avatar icon"
-              className="avatar-icon-style"
-            />
           ))}
         <div className="articles-list">
-          <div className="sort-by-filters">
+          <div>
             <button
-              onClick={e => {
-                this.handleClick('created_at');
-              }}
-              className="filter-buttons"
+              className="sort-by-filters-drop"
+              onClick={this.flipShowSorts}
             >
-              new
+              <strong>sort by</strong>
             </button>
-            <button
-              onClick={e => {
-                this.handleClick('votes');
-              }}
-              className="filter-buttons"
-            >
-              votes
-            </button>
-            <button
-              onClick={e => {
-                this.handleClick('comment_count');
-              }}
-              className="filter-buttons"
-            >
-              comments
-            </button>
+            {showSorts && (
+              <div className="sort-by-filters">
+                <button
+                  onClick={e => {
+                    this.handleClick('created_at');
+                  }}
+                  className="filter-buttons"
+                >
+                  <strong>newest</strong>
+                </button>
+                <button
+                  onClick={e => {
+                    this.handleClick('votes');
+                  }}
+                  className="filter-buttons"
+                >
+                  <strong>popular</strong>
+                </button>
+                <button
+                  onClick={e => {
+                    this.handleClick('comment_count');
+                  }}
+                  className="filter-buttons"
+                >
+                  <strong>comments</strong>
+                </button>
+              </div>
+            )}
           </div>
 
           {!isLoading ? (

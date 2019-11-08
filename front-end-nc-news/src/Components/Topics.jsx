@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { Link } from '@reach/router';
 import * as api from '../utils/api';
+import { Animated } from 'react-animated-css';
 
 class Topics extends Component {
   state = {
@@ -16,16 +17,20 @@ class Topics extends Component {
   }
   render() {
     const { isLoading, topics } = this.state;
+    const slideFadeArr = [0, 1200, 2500];
     return (
       <div className="topics-nav">
-        <Link to={`/`}>
-          <h5 className="topic-selector">all</h5>
-        </Link>
         {!isLoading &&
           topics.map((topic, idx) => {
             return (
               <Link to={`/topic/${topic.slug}`} key={idx}>
-                <h5 className="topic-selector">{topic.slug}</h5>
+                <Animated
+                  animationIn="fadeIn"
+                  animationInDuration={800 + slideFadeArr[idx]}
+                  isVisible={true}
+                >
+                  <h5 className="topic-selector">{topic.slug}</h5>
+                </Animated>
               </Link>
             );
           })}

@@ -5,9 +5,6 @@ const CommentCard = props => {
   const { votes, comment_id } = props.comment;
   return (
     <>
-      <br />
-      <hr />
-      <br />
       <div className="comment-card">
         <p>{props.comment.body}</p>
         <h5>{props.comment.author}</h5>
@@ -28,6 +25,9 @@ const CommentCard = props => {
           </h4>
         )}
       </div>
+      <br />
+      <hr className="comment-divider" />
+      <br />
     </>
   );
 };

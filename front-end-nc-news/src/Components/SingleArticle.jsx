@@ -11,7 +11,8 @@ class SingleArticle extends Component {
     isLoading: true,
     username: localStorage.getItem('username'),
     allowVotes: false,
-    err: ''
+    err: '',
+    avatarUrl: localStorage.getItem('avatar')
   };
   componentDidMount() {
     api
@@ -31,25 +32,31 @@ class SingleArticle extends Component {
       })
       .catch(err => {
         this.setState({
-          err: 'No Article for that ID...'
+          err: 'no article found...'
         });
       });
   }
   render() {
-    const { isLoading, article, err } = this.state;
+    const { isLoading, article, err, avatarUrl } = this.state;
     if (err) return <HandleError err={err} />;
     return (
       <div className="single-article-page">
         {!isLoading ? (
           <>
+            <img
+              src={avatarUrl}
+              alt="users avatar icon"
+              className="user-avatar-icon-style"
+            ></img>
             <div className="single-article-card">
-              <h3>{article.title}</h3>
-              <p>{article.body}</p>
-              <p>
+              <h3 className="article-card-title">{article.title}</h3>
+              <div className="author-under-title">
                 <span className="tags">&lt;</span>
                 {article.author}
                 <span className="tags">/&gt;</span>
-              </p>
+              </div>
+              <hr className="title-underline" align="left" />
+              <p className="article-card-blurb">{article.body}</p>
               <Voter
                 prefix={'articles'}
                 votes={article.votes}

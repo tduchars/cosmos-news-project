@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import * as api from '../utils/api';
 import CommentCard from './CommentCard';
 import AddComment from './AddComment';
+import { Animated } from 'react-animated-css';
 
 class CommentList extends Component {
   state = {
     comments: [],
-    isLoading: true
+    isLoading: true,
+    showComments: false
   };
   componentDidMount() {
     api.fetchCommentsByArticle(this.props.article_id).then(comments => {
@@ -30,25 +32,53 @@ class CommentList extends Component {
       this.setState({ comments: removedComment });
     });
   };
+  revealComments = () => {
+    this.setState(currentState => {
+      return { showComments: !currentState.showComments };
+    });
+  };
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, showComments } = this.state;
     return (
       <div className="comment-list">
         {this.props.allowVotes && (
           <AddComment commentAdder={this.commentAdder} />
         )}
-        {!isLoading &&
-          comments.map(comment => {
-            return (
-              <CommentCard
-                comment={comment}
-                allowVotes={this.props.allowVotes}
-                key={comment.comment_id}
-                handleDelete={this.handleDelete}
-                username={this.props.username}
-              />
-            );
-          })}
+        {showComments ? (
+          <h2 className="reveal-comments" onClick={this.revealComments}>
+            &#708;
+          </h2>
+        ) : (
+          <h2 className="reveal-comments" onClick={this.revealComments}>
+            &#709;
+          </h2>
+        )}
+        <div>
+          {showComments && (
+            <>
+              <Animated
+                animationIn="fadeInUp"
+                animationOut="fadeOut"
+                animationInDuration={1200}
+                animationOutDuration={800}
+                isVisible={true}
+              >
+                {!isLoading &&
+                  comments.map((comment, idx) => {
+                    return (
+                      <CommentCard
+                        comment={comment}
+                        allowVotes={this.props.allowVotes}
+                        handleDelete={this.handleDelete}
+                        username={this.props.username}
+                        key={comment.comment_id}
+                      />
+                    );
+                  })}
+              </Animated>
+            </>
+          )}
+        </div>
       </div>
     );
   }

@@ -7,6 +7,7 @@ import Topics from './Components/Topics';
 import SingleArticle from './Components/SingleArticle';
 import Footer from './Components/Footer';
 import HandleError from './Components/HandleError';
+import ProjectsLink from './Components/ProjectsLink';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <ArticlesList path="/topic/:topic" />
         <SingleArticle path="/articles/:article_id" />
         <HandleError path="/*" />
+        <ProjectsLink path="/projects" />
       </Router>
       <Footer />
     </div>

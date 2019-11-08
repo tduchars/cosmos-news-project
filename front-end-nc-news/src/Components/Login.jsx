@@ -4,7 +4,7 @@ import * as api from '../utils/api';
 class Login extends Component {
   state = {
     allUsers: [],
-    username: '',
+    username: 'jessjelly',
     avatarUrl: '',
     isLoading: true,
     showLogin: false,

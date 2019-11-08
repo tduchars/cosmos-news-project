@@ -38,32 +38,34 @@ class AddComment extends Component {
   render() {
     return (
       <>
-        <div>
-          <button className="dropdown-form-button" onClick={this.showInputs}>
-            add comment
-          </button>
-          {this.state.showMenu && (
-            <div>
-              <form onSubmit={this.handleSubmit}>
-                <label htmlFor="">
-                  <input
-                    className="add-comment-input"
-                    type="text"
-                    placeholder="be nice..."
-                    onChange={this.handleInputs}
-                    value={this.state.commentInput}
-                  />
-                </label>
-                <label htmlFor="">
-                  <button className="add-comment-button">post</button>
-                </label>
-              </form>
-            </div>
-          )}
-          {this.state.triggerPrompt && (
-            <h5 className="prompt-message">No empty voids allowed...</h5>
-          )}
-        </div>
+        <button className="dropdown-form-button" onClick={this.showInputs}>
+          add comment
+        </button>
+        {this.state.showMenu && (
+          <div>
+            <form
+              onSubmit={this.handleSubmit}
+              className="add-comment-container"
+            >
+              <label htmlFor="">
+                <textarea
+                  className="add-comment-input"
+                  rows="4"
+                  cols="50"
+                  placeholder="be nice..."
+                  onChange={this.handleInputs}
+                  value={this.state.commentInput}
+                />
+              </label>
+              <label htmlFor="">
+                <button className="add-comment-button">&#707;</button>
+              </label>
+            </form>
+          </div>
+        )}
+        {this.state.triggerPrompt && (
+          <h5 className="prompt-message">no voids allowed...</h5>
+        )}
       </>
     );
   }
