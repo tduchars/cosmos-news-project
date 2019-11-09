@@ -1,10 +1,10 @@
-## cosmos news - FrontEnd Project by Tony Duchars
+## FrontEnd Project by Tony Duchars
 
-## Built on NC News backEnd API
+## Built on the NC News backEnd API
 
 FOLLOW THE INSTRUCTIONS FOR LOCAL HOSTING.
 ALSO INCLUDES RECOMMENDED USAGE.
-FINALLY CONCLUDES WITH VALUABLE LESSONS TAKEN FROM PROJECT.
+FINALLY CONCLUDES WITH SOME LESSONS TAKEN FROM PROJECT.
 
 ## INSTRUCTIONS
 
@@ -37,7 +37,7 @@ dependencies which will support the functionality.)
 
 ## ** RECOMMENDED **
 
-Remembers articles you have read and re-styles the underline to cyan blue once visited an article.
+The site remembers articles you have read and re-styles the underline to cyan blue once visited an article from the homepage.
 
 I have also pre-entered a username so just click login or change the username if you wish to an existing username if you like. (find other usernames under the articles)
 
@@ -51,20 +51,25 @@ Also there is a logout button at the bottom which is only visible if you are log
 
 The link to the hosted version of the site can be found at here:
 
-<link>
+https://cosmos-news-project.netlify.com/topic/coding
+
+and repository:
+
+https://github.com/tduchars/cosmos-news-project
 
 ## Link to backEnd Repository
 
 The link to the backEnd repository (of which this frontEnd queries) can be found at here:
 
-<link>
-(It's respective README and API endpoints can all be found locally in that repository.)
+https://github.com/tduchars/backEnd-News-API
+
+(It's respective README can also be found locally here.)
 
 ## Link to Hosted backEnd API
 
-The link to the hosted version of the backEnd API (of which this frontEnd queries) can be found at here:
+The link to the hosted version of the backEnd API (of which this frontEnd queries) can be found here:
 
-<link>
+https://nc-tabloid.herokuapp.com/api
 
 ## WHAT I LEARNT FROM THE PROJECT
 

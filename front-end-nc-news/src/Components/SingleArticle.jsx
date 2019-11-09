@@ -43,11 +43,13 @@ class SingleArticle extends Component {
       <div className="single-article-page">
         {!isLoading ? (
           <>
-            <img
-              src={avatarUrl}
-              alt="users avatar icon"
-              className="user-avatar-icon-style"
-            ></img>
+            {avatarUrl && (
+              <img
+                src={avatarUrl}
+                alt="users avatar icon"
+                className="user-avatar-icon-style"
+              ></img>
+            )}
             <div className="single-article-card">
               <h3 className="article-card-title">{article.title}</h3>
               <div className="author-under-title">

@@ -163,6 +163,12 @@ h1 {
   border: none;
 }
 
+.login-user:hover {
+  text-shadow: 0px 0px 6px rgb(185, 151, 255);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
 .logout {
   max-width: 100px;
   grid-column: 3;
@@ -177,6 +183,12 @@ h1 {
   color: var(--error-variant);
   background: var(--dp-dm-offset);
   align-items: center;
+}
+
+.logout:hover {
+  text-shadow: 0px 0px 6px rgb(255, 158, 158);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
 
 /* ... */
