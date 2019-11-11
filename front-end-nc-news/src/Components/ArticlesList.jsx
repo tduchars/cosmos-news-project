@@ -46,7 +46,14 @@ class ArticlesList extends Component {
     const { topic } = this.props;
     const { sortBy, page } = this.state;
     if (prevProps.topic !== topic) {
-      this.setState({ page: 1, sortBy: 'created_at' });
+      this.setState({ page: 1, sortBy: 'created_at' }, () => {
+        api
+          .fetchAllArticles(topic, sortBy, 1, 100)
+          .then(({ data: { articles } }) => {
+            const maxPage = Math.ceil(articles.length / 5);
+            this.setState({ maxPage });
+          });
+      });
     }
     if (prevState.sortBy !== sortBy) {
       this.setState({ page: 1 });
@@ -86,11 +93,16 @@ class ArticlesList extends Component {
 
   changePage = e => {
     const value = e.target.name === 'next-page' ? 1 : -1;
-    this.setState(currentState => {
-      return {
-        page: currentState.page + value
-      };
-    });
+    this.setState(
+      currentState => {
+        return {
+          page: currentState.page + value
+        };
+      },
+      () => {
+        window.scrollTo(0, 0);
+      }
+    );
   };
 
   render() {
@@ -105,6 +117,7 @@ class ArticlesList extends Component {
       maxPage
     } = this.state;
     if (err) return <HandleError err={err} />;
+    console.log(maxPage);
     return (
       <>
         {!userLogged && <Login path="/login" addUsername={this.addUsername} />}
@@ -172,10 +185,20 @@ class ArticlesList extends Component {
             </div>
           )}
           <div>
-            {page > 1 && <button onClick={this.changePage}>{page - 1}</button>}
-            <button>{page}</button>
+            {page > 1 && (
+              <button onClick={this.changePage} className="page-button">
+                {page - 1}
+              </button>
+            )}
+            <button disabled className="page-button">
+              {page}
+            </button>
             {page < maxPage && (
-              <button onClick={this.changePage} name="next-page">
+              <button
+                onClick={this.changePage}
+                name="next-page"
+                className="page-button"
+              >
                 {page + 1}
               </button>
             )}

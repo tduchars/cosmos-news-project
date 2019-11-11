@@ -2,9 +2,17 @@
 
 ## Built on the NC News backEnd API
 
-FOLLOW THE INSTRUCTIONS FOR LOCAL HOSTING.
-ALSO INCLUDES RECOMMENDED USAGE.
-FINALLY CONCLUDES WITH SOME LESSONS TAKEN FROM PROJECT.
+## FUNCTIONALITY
+
+- PAGINATION with dynamic max page functionality fo when filtering.
+
+- LOGIN and logout functionality. (currently learning and adding in token-based authentication to the back-end)
+
+- FILTERING and Sort-by queries of data kept in database.
+
+- VOTING on individual articles and comments only when logged into valid account.
+
+- Thought given to responsive and consistent design throughout. (mobile and desktop )
 
 ## INSTRUCTIONS
 
@@ -39,13 +47,7 @@ dependencies which will support the functionality.)
 
 The site remembers articles you have read and re-styles the underline to cyan blue once visited an article from the homepage.
 
-I have also pre-entered a username so just click login or change the username if you wish to an existing username if you like. (find other usernames under the articles)
-
-Once logged in you are given the functionality to add comments and vote on articles.
-
-If you are not "logged in" then this functionality is removed.
-
-Also there is a logout button at the bottom which is only visible if you are logged in.
+You have a pre-entered username to login or find other usernames under the articles if you wish.
 
 ## Link to Hosted Site
 
@@ -76,3 +78,5 @@ https://nc-tabloid.herokuapp.com/api
 I learnt it is very important to structure the layout and concepts of where to hold state in the app formally and to a precise level. Due to me not giving this enough credit I had to compromise various nice functionality.
 
 This is something I had not encountered before but will certainly give more credit to in the future.
+
+Pagination I felt was also imprtant to include as it helps break up the 30+ articles otherwise bombarding you.

@@ -484,11 +484,20 @@ h1 {
   height: 60vh;
 }
 
-.flip-grid-project {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
-  grid-template-rows: 1fr 1fr;
-  color: var(--main-dm-text-focus);
+.page-button {
+  font-size: 0.8em;
+  padding: 0.8em;
+  background: var(--dp-dm-offset);
+  color: var(--main-dm-text);
+  border-radius: 8px;
+}
+
+.page-button:hover {
+  cursor: pointer;
+}
+
+.page-button:disabled {
+  border: black;
 }
 
 @font-face {
