@@ -15,7 +15,7 @@ class ArticlesList extends Component {
     avatarUrl: localStorage.getItem('avatar'),
     err: '',
     page: 1,
-    maxPage: 1,
+    maxPage: 8,
     showSorts: false
   };
 
@@ -27,9 +27,15 @@ class ArticlesList extends Component {
     api
       .fetchAllArticles(this.props.topic)
       .then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false, userLogged, err: '' });
+        this.setState({
+          articles,
+          isLoading: false,
+          userLogged,
+          err: '',
+          page: 1
+        });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           err: 'invalid url...'
         });
@@ -38,10 +44,20 @@ class ArticlesList extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
-    const { sortBy } = this.state;
-    if (prevProps.topic !== topic || prevState.sortBy !== sortBy) {
+    const { sortBy, page } = this.state;
+    if (prevProps.topic !== topic) {
+      this.setState({ page: 1, sortBy: 'created_at' });
+    }
+    if (prevState.sortBy !== sortBy) {
+      this.setState({ page: 1 });
+    }
+    if (
+      prevProps.topic !== topic ||
+      prevState.sortBy !== sortBy ||
+      prevState.page !== page
+    ) {
       api
-        .fetchAllArticles(topic, this.state.sortBy)
+        .fetchAllArticles(topic, sortBy, page)
         .then(({ data: { articles } }) => {
           this.setState({ articles, isLoading: false });
         });
@@ -68,6 +84,15 @@ class ArticlesList extends Component {
     });
   };
 
+  changePage = e => {
+    const value = e.target.name === 'next-page' ? 1 : -1;
+    this.setState(currentState => {
+      return {
+        page: currentState.page + value
+      };
+    });
+  };
+
   render() {
     const {
       isLoading,
@@ -75,7 +100,9 @@ class ArticlesList extends Component {
       userLogged,
       err,
       avatarUrl,
-      showSorts
+      showSorts,
+      page,
+      maxPage
     } = this.state;
     if (err) return <HandleError err={err} />;
     return (
@@ -140,8 +167,19 @@ class ArticlesList extends Component {
               );
             })
           ) : (
-            <SphereSpinner size={40} color="#bb86fc" />
+            <div className="loader">
+              <SphereSpinner size={40} color="#bb86fc" />
+            </div>
           )}
+          <div>
+            {page > 1 && <button onClick={this.changePage}>{page - 1}</button>}
+            <button>{page}</button>
+            {page < maxPage && (
+              <button onClick={this.changePage} name="next-page">
+                {page + 1}
+              </button>
+            )}
+          </div>
         </div>
       </>
     );

@@ -8,7 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <Link to="/projects" className="github-links">
+        <Link to="/" className="github-links">
           <h4>other projects</h4>
         </Link>
         {this.state.userLogged && (

@@ -8,12 +8,16 @@ export const fetchAllTopics = () => {
     });
 };
 
-export const fetchAllArticles = (topic, sort_by) => {
+export const fetchAllArticles = (topic, sort_by, page) => {
+  console.log(page, 'page');
+  console.log(sort_by, 'sorted');
+  console.log(topic);
   return axios
     .get('https://nc-tabloid.herokuapp.com/api/articles', {
       params: {
         topic,
-        sort_by
+        sort_by,
+        page
       }
     })
     .then(articles => {
