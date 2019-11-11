@@ -117,7 +117,6 @@ class ArticlesList extends Component {
       maxPage
     } = this.state;
     if (err) return <HandleError err={err} />;
-    console.log(maxPage);
     return (
       <>
         {!userLogged && <Login path="/login" addUsername={this.addUsername} />}
