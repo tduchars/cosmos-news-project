@@ -46,7 +46,7 @@ class ArticlesList extends Component {
     const { topic } = this.props;
     const { sortBy, page } = this.state;
     if (prevProps.topic !== topic) {
-      this.setState({ page: 1, sortBy: 'created_at' }, () => {
+      this.setState({ page: 1, sortBy: 'created_at', isLoading: true }, () => {
         api
           .fetchAllArticles(topic, sortBy, 1, 100)
           .then(({ data: { articles } }) => {
@@ -54,8 +54,7 @@ class ArticlesList extends Component {
             this.setState({ maxPage });
           });
       });
-    }
-    if (prevState.sortBy !== sortBy) {
+    } else if (prevState.sortBy !== sortBy) {
       this.setState({ page: 1 });
     }
     if (

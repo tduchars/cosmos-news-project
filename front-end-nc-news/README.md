@@ -53,7 +53,7 @@ You have a pre-entered username to login or find other usernames under the artic
 
 The link to the hosted version of the site can be found at here:
 
-https://cosmos-news-project.netlify.com/topic/coding
+https://cosmos-news-project.netlify.com
 
 and repository:
 
